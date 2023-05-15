@@ -10,7 +10,7 @@ const Layout: FC<ILayoutProps> = ({ children }) => {
   return (
     <>
       <Header />
-      <main className="pb-16 px-5 pt-5">{children}</main>
+      <main className="pb-16 px-5 pt-5 bg-teal-100 h-screen">{children}</main>
       <Footer />
     </>
   );

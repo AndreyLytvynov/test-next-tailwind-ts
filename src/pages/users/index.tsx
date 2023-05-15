@@ -1,14 +1,18 @@
 import Link from "next/link";
-import React from "react";
+import React, { FC } from "react";
+import { IUser } from "@/types/user.type";
 
-const UsersPage = ({ contacts }: any) => {
-  console.log(contacts);
+type IUsersProps = {
+  users: IUser[];
+};
+
+const UsersPage: FC<IUsersProps> = ({ users }) => {
   return (
-    <ul>
-      {contacts.map((user: any) => {
+    <ul className="flex flex-col gap-3">
+      {users.map((user) => {
         return (
-          <li key={user.id}>
-            <Link href={`${user.id}`}>
+          <li key={user.id} className="p-2 bg-teal-200 hover:bg-teal-300">
+            <Link href={`users/${user.id}`}>
               <p>{user.name}</p>
             </Link>
           </li>
@@ -25,6 +29,6 @@ export const getStaticProps = async () => {
   const data = await response.json();
 
   return {
-    props: { contacts: data },
+    props: { users: data },
   };
 };
